@@ -4,11 +4,12 @@ FROM node:8
 RUN useradd --user-group --create-home --shell /bin/false app &&\
   npm install --global npm
 
-# create home dir and switch to app user
+# create home dir, install app dependencies and switch to app user
 ENV HOME=/home/app
+COPY --chown=app:app package.json npm-shrinkwrap.json $HOME/ridefinder/
+
 USER app
 WORKDIR $HOME/ridefinder
-
-EXPOSE 8080
+RUN npm install
 
 CMD [ "npm", "run", "dev" ]

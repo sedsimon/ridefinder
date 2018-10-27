@@ -1,6 +1,7 @@
 ridefinder:
   build: .
-  command: echo 'ready'
+  ports:
+    - '47000:8080'
   volumes:
     - .:/home/app/ridefinder
-  
+    - /home/app/ridefinder/node_modules  
