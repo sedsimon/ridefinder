@@ -1,15 +1,13 @@
 FROM node:8
 
-# create app directory
-WORKDIR /usr/src/ridefinder
+# create user
+RUN useradd --user-group --create-home --shell /bin/false app &&\
+  npm install --global npm
 
-# install app dependencies
-COPY package*.json ./
-
-RUN npm install
-
-# Bundle app source
-COPY . .
+# create home dir and switch to app user
+ENV HOME=/home/app
+USER app
+WORKDIR $HOME/ridefinder
 
 EXPOSE 8080
 
