@@ -27,5 +27,16 @@
     "vue-template-compiler": "^2.3.3",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sedsimon/ridefinder.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sedsimon/ridefinder/issues"
+  },
+  "homepage": "https://github.com/sedsimon/ridefinder#readme"
 }

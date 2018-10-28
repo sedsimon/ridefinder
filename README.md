@@ -6,7 +6,7 @@
 Dev environment runs in a docker container. Browse at http://localhost:<localport>
 
 ``` bash
-docker build <image_name> .
+docker build -t <image_name> .
 docker run -p <local_port>:8080 --rm -i <image_name>
 
 ```

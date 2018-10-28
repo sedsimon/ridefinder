@@ -1,16 +1,15 @@
 FROM node:8
 
-# create app directory
-WORKDIR /usr/src/ridefinder
+# create user
+RUN useradd --user-group --create-home --shell /bin/false app &&\
+  npm install --global npm
 
-# install app dependencies
-COPY package*.json ./
+# create home dir, install app dependencies and switch to app user
+ENV HOME=/home/app
+COPY --chown=app:app package.json npm-shrinkwrap.json $HOME/ridefinder/
 
+USER app
+WORKDIR $HOME/ridefinder
 RUN npm install
-
-# Bundle app source
-COPY . .
-
-EXPOSE 8080
 
 CMD [ "npm", "run", "dev" ]
