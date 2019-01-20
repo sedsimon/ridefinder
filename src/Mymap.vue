@@ -1,12 +1,15 @@
 <template>
   <div>
+    foo
     <segmentList :segments="segments"></segmentList>
     <div id="mapid"></div>
+    <div id="apiResponse">{{apiResponse}}</div>
   </div>
 </template>
 
 <script>
 import L from 'leaflet'
+import axios from 'axios'
 import segmentList from "./SegmentList.vue"
 import _ from 'underscore'
 
@@ -16,7 +19,8 @@ export default {
 
   data: () => {
     return {
-      segments: []
+      segments: [],
+      apiResponse: null
     }
   },
 
@@ -40,6 +44,9 @@ export default {
           gradient: "4.0"
         }
       ])
+
+      axios.get('http://localhost:8000/polls').then(response=>(this.apiResponse = response))
+        .catch(error => console.log(error))
     }
   },
 

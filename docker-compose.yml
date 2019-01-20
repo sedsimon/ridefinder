@@ -1,7 +1,13 @@
-ridefinder:
-  build: .
-  ports:
-    - '47000:8080'
-  volumes:
-    - .:/home/app/ridefinder
-    - /home/app/ridefinder/node_modules  
+version: "3"
+services:
+  ridefinder:
+    build: .
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/home/app/ridefinder
+      - /home/app/ridefinder/node_modules
+  djangoparty:
+    image: sedsimon/djangoparty:latest
+    ports:
+      - '8000:8000'
